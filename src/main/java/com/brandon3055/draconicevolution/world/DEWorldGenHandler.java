@@ -61,13 +61,13 @@ public class DEWorldGenHandler implements IWorldGenerator {
                 }
                 break;
             case 1:
-                int actualX = chunkX * 16;
-                int actualZ = chunkZ * 16;
-                int x1 = actualX + random.nextInt(16);
-                int y = 20 + random.nextInt(170);
-                int z1 = actualZ + random.nextInt(16);
-                if (DEConfig.generateEnderComets && Math.sqrt(actualX * actualX + actualZ * actualZ) > 200 && random.nextInt(Math.max(1, DEConfig.cometRarity)) == 0) {
-                    new WorldGenEnderComet().generate(world, random, new BlockPos(actualX + 8, y, actualZ + 8));
+                int actualX = chunkX * 19;
+                int actualZ = chunkZ * 19;
+                int x1 = actualX + random.nextInt(19);
+                int y = 20 + random.nextInt(200);
+                int z1 = actualZ + random.nextInt(19);
+                if (DEConfig.generateEnderComets && Math.sqrt(actualX * actualX + actualZ * actualZ) > 230 && random.nextInt(Math.max(1, DEConfig.cometRarity)) == 0) {
+                    new WorldGenEnderComet().generate(world, random, new BlockPos(actualX + 10, y, actualZ + 10));
                 }
                 if (DEConfig.generateChaosIslands) {
                     ChaosWorldGenHandler.generateChunk(world, chunkX, chunkZ, null, random);
@@ -107,9 +107,9 @@ public class DEWorldGenHandler implements IWorldGenerator {
      **/
     public void addOreSpawn(IBlockState block, IBlockState baseBlock, World world, Random random, int chunkXPos, int chunkZPos, int minVainSize, int maxVainSize, int chancesToSpawn, int minY, int maxY) {
         for (int i = 0; i < chancesToSpawn; i++) {
-            int posX = chunkXPos + random.nextInt(16);
+            int posX = chunkXPos + random.nextInt(19);
             int posY = minY + random.nextInt(maxY - minY);
-            int posZ = chunkZPos + random.nextInt(16);
+            int posZ = chunkZPos + random.nextInt(19);
 
             new WorldGenMinable(block, (minVainSize + random.nextInt(maxVainSize - minVainSize)), BlockMatcher.forBlock(baseBlock.getBlock())).generate(world, random, new BlockPos(posX, posY, posZ));
         }
